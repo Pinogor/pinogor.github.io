@@ -7,7 +7,7 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <div className="content">
-                    <h2>Пиногоро Дмитрий</h2>
+                    <h2>Пиногоров Дмитрий</h2>
                     <h3>О себе:</h3>
                     <h6>
                         <li>Я Middle Python разработчик с неплохой базой в разработке бэкенда и стремлением к постоянному профессиональному росту.<br/>
