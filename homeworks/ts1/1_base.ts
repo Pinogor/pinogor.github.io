@@ -10,7 +10,7 @@ export const removeFirstZeros = (value: string) => value.replace(/^(-)?[0]+(-?\d
 export const getBeautifulNumber = (value?: string, separator = ' ') =>
     value?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
 
-export const round = (value: number, accuracy: number = 2) => {
+export const round = (value: number, accuracy = 2) => {
     const d = 10 ** accuracy;
     return Math.round(value * d) / d;
 };
@@ -18,7 +18,8 @@ export const round = (value: number, accuracy: number = 2) => {
 const transformRegexpRe: RegExp =
     /(matrix\(-?\d+(\.\d+)?, -?\d+(\.\d+)?, -?\d+(\.\d+)?, -?\d+(\.\d+)?, )(-?\d+(\.\d+)?), (-?\d+(\.\d+)?)\)/;
 
-export const getTransformFromCss = (transformCssString: string): { x: number, y: number } => {
+type Coordinates = { x: number, y: number };
+export const getTransformFromCss = (transformCssString: string): Coordinates => {
     const data = transformCssString.match(transformRegexpRe);
     if (!data) return {x: 0, y: 0};
     return {
@@ -27,7 +28,7 @@ export const getTransformFromCss = (transformCssString: string): { x: number, y:
     };
 };
 
-export const getColorContrastValue = ([red, green, blue]: number[]) =>
+export const getColorContrastValue = ([red, green, blue]: number[]): number =>
     // http://www.w3.org/TR/AERT#color-contrast
     Math.round((red * 299 + green * 587 + blue * 114) / 1000);
 
@@ -36,7 +37,8 @@ export const getContrastType = (contrastValue: number): string => (contrastValue
 export const shortColorRegExp: RegExp = /^#[0-9a-f]{3}$/i;
 export const longColorRegExp: RegExp = /^#[0-9a-f]{6}$/i;
 
-export const checkColor = (color: string): void => {
+type Result<T> = T | Error;
+export const checkColor = (color: string): Result<void> => {
     if (!longColorRegExp.test(color) && !shortColorRegExp.test(color)) throw new Error(`invalid hex color: ${color}`);
 };
 
@@ -58,23 +60,26 @@ export const getNumberedArray = (arr: string[]) => arr.map((value: string, numbe
     value: string,
     number: number
 } => ({value, number}));
-export const toStringArray = (arr: { value: string, number: number }[]) => arr.map(({
-                                                                                        value,
-                                                                                        number
-                                                                                    }): string => `${value}_${number}`);
+
+type ValueNumberPair = { value: string, number: number };
+export const toStringArray = (arr: ValueNumberPair[]): string[] => arr.map(({value,number}): string => `${value}_${number}`);
 
 interface Customer {
-    id?: number
-    name: string
-    age: number
-    isSubscribed: boolean
+    id?: number;
+    name: string;
+    age: number;
+    isSubscribed: boolean;
 }
 
-export const transformCustomers = (customers: Customer[]) => {
+type TransformCustomers = { [id: number]: Omit<Customer, "id"> };
+
+export const transformCustomers = (customers: Customer[]): TransformCustomers => {
     return customers.reduce((acc, customer) => {
-        if (customer.id !== undefined) {
-            acc[customer.id] = {name: customer.name, age: customer.age, isSubscribed: customer.isSubscribed}
-        };
+            acc[customer.id] = {
+                name: customer.name,
+                age: customer.age,
+                isSubscribed: customer.isSubscribed,
+        }
         return acc;
-    }, {} as { [id: number]: { name: string; age: number; isSubscribed: boolean } });
+    }, {} as TransformCustomers);
 };
