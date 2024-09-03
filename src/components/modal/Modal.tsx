@@ -1,5 +1,3 @@
-// src/shared/modal/Modal.tsx
-
 import React from 'react';
 import './modal.css';
 
