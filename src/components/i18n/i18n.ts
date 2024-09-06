@@ -20,6 +20,7 @@ i18n.use(initReactI18next).init({
           switchToRussian: 'RU',
           switchToEnglish: 'EN',
         },
+        addProductButton: 'Add Random Product',
       },
     },
     ru: {
@@ -32,13 +33,14 @@ i18n.use(initReactI18next).init({
         closeModal: 'Закрыть',
         inputPlaceholder: 'Введите текст здесь',
         themeSwitcher: {
-          light: 'Cветлуя тема',
+          light: 'Cветлая тема',
           dark: 'Темная тема',
         },
         languageSwitcher: {
           switchToRussian: 'РУ',
           switchToEnglish: 'EN',
         },
+        addProductButton: 'Добавить случайный продукт',
       },
     },
   },
