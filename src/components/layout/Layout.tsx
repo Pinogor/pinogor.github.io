@@ -3,7 +3,7 @@ import Header from '../header/Header';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div>
+    <div className="layout">
       <Header />
       <main>{children}</main>
     </div>
