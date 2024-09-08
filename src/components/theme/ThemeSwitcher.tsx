@@ -1,9 +1,8 @@
-// src/components/theme/ThemeSwitcher.tsx
-
 import React from 'react';
 import { useTheme } from './ThemeProvider';
 import { useTranslation } from 'react-i18next'; // Импортируем хук useTranslation
 import './themeSwitcher.css';
+import i18n from '../i18n/i18n';
 
 const ThemeSwitcher: React.FC = () => {
   const { theme, toggleTheme } = useTheme();

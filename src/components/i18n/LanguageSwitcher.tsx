@@ -2,7 +2,6 @@ import React from 'react';
 import { useLanguage } from './LanguageProvider';
 import { useTranslation } from 'react-i18next';
 import './languageSwitcher.css';
-
 const LanguageSwitcher: React.FC = () => {
   const { toggleLanguage } = useLanguage();
   const { i18n, t } = useTranslation(); // Используем хук useTranslation для перевода
