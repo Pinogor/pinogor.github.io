@@ -9,8 +9,6 @@ const Header: React.FC = () => {
     <header className="header">
       <Logo />
       <div className="header-controls">
-        {' '}
-        {/* Контейнер для кнопок */}
         <LanguageSwitcher />
         <ThemeSwitcher />
       </div>

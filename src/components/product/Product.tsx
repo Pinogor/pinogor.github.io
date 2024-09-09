@@ -1,16 +1,17 @@
 import React from 'react';
 import './product.css';
 
-type ProductProps = {
-  product: {
-    id: number;
-    name: string;
-    price: number;
-    description: string;
-    imageUrl: string;
-  };
+type TProduct = {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+  imageUrl: string;
 };
 
+type ProductProps = {
+  product: TProduct;
+};
 const Product: React.FC<ProductProps> = ({ product }) => {
   return (
     <div className="product-card">
