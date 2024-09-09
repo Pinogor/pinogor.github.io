@@ -1,6 +1,5 @@
 name: Deploy Storybook
 
-# Запуск при каждом push в любую ветку
 on:
   push:
     branches:
@@ -21,7 +20,7 @@ jobs:
         run: npm run build-storybook
 
       - name: Deploy Storybook to GitHub Pages
-        uses: pinogor/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v3.9.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
