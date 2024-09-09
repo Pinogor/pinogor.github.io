@@ -1,12 +1,16 @@
 .collapse-content {
   overflow: hidden;
-  transition: height 3s ease;
+  transition: height 0.5s ease;
   height: 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 0;
 }
 
 .collapse-content.open {
   height: auto;
-  transition: height 3s ease;
+  transition: height 0.5s ease;
 }
 
 .collapse-content.closed {
@@ -16,7 +20,10 @@
 .collapse-text {
   opacity: 0;
   transform: translateY(-10px);
-  transition: opacity 3s ease, transform 3s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  padding: 16px;
+  color: #333;
+  font-size: 16px;
 }
 
 .collapse-text.fade-in {
