@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ProductForm from './ProductForm';
-import { ThemeProvider } from '../../../components/theme/ThemeProvider';
-import { LanguageProvider } from '../../../components/i18n/LanguageProvider';
+import { ThemeProvider } from '../../theme/ThemeProvider';
+import { LanguageProvider } from '../../i18n/LanguageProvider';
 import Layout from '../../layout/Layout';
 import React from 'react';
 

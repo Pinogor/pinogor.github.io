@@ -22,7 +22,7 @@ const meta: Meta<typeof EditProductForm> = {
       <ThemeProvider>
         <LanguageProvider>
           <Layout>
-            <EditProductForm />
+            <EditProductForm product={product} />
           </Layout>
         </LanguageProvider>
       </ThemeProvider>
