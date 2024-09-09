@@ -1,0 +1,33 @@
+/* src/components/product/product.css */
+
+.product-card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  width: 100%; /* Ширина карточки растягивается до размеров колонки */
+  box-sizing: border-box; /* Учитывает отступы и рамки в ширине */
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.product-name {
+  font-size: 1.25em;
+  margin: 8px 0;
+}
+
+.product-description {
+  font-size: 1em;
+  margin: 8px 0;
+  color: #555;
+}
+
+.product-price {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+}
