@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import '../form-style.scss';
 import '../../../index.css';
 
@@ -9,6 +10,8 @@ interface FormData {
 }
 
 const LoginForm: React.FC = () => {
+  const { t } = useTranslation();
+
   const {
     register,
     handleSubmit,
@@ -17,22 +20,22 @@ const LoginForm: React.FC = () => {
   } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
-    console.log(data); // Вывод данных в консоль после отправки
-    reset(); // Очистка формы
+    console.log(data);
+    reset();
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form-container">
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">{t('loginForm.email')}</label>
         <input
           type="email"
           id="email"
           {...register('email', {
-            required: 'Email is required',
+            required: t('loginForm.emailRequired'),
             pattern: {
               value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
-              message: 'Invalid email address',
+              message: t('loginForm.invalidEmail'),
             },
           })}
         />
@@ -40,22 +43,22 @@ const LoginForm: React.FC = () => {
       </div>
 
       <div>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">{t('loginForm.password')}</label>
         <input
           type="password"
           id="password"
           {...register('password', {
-            required: 'Password is required',
+            required: t('loginForm.passwordRequired'),
             minLength: {
               value: 9,
-              message: 'Password must be at least 9 characters long',
+              message: t('loginForm.passwordMinLength'),
             },
           })}
         />
         {errors.password && <p>{errors.password.message}</p>}
       </div>
 
-      <button type="submit">Login</button>
+      <button type="submit">{t('loginForm.submitButton')}</button>
     </form>
   );
 };

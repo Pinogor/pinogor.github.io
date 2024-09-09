@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import '../form-style.scss';
 import '../../../index.css';
@@ -17,11 +18,13 @@ interface EditProductFormProps {
 }
 
 const EditProductForm: React.FC<EditProductFormProps> = ({ product }) => {
+  const { t } = useTranslation();
+
   const validationSchema = Yup.object({
-    name: Yup.string().required('Product name is required'),
-    price: Yup.number().required('Price is required').min(0, 'Price must be greater than 0'),
-    description: Yup.string().required('Description is required'),
-    imageUrl: Yup.string().url('Invalid URL').required('Image URL is required'),
+    name: Yup.string().required(t('productForm.nameRequired')),
+    price: Yup.number().required(t('productForm.priceRequired')).min(0, t('productForm.priceRequired')),
+    description: Yup.string().required(t('productForm.descriptionRequired')),
+    imageUrl: Yup.string().url(t('productForm.invalidUrl')).required(t('productForm.invalidUrl')),
   });
 
   return (
@@ -36,30 +39,30 @@ const EditProductForm: React.FC<EditProductFormProps> = ({ product }) => {
       {() => (
         <Form className="form-container">
           <div>
-            <label htmlFor="name">Product Name</label>
+            <label htmlFor="name">{t('productForm.productName')}</label>
             <Field name="name" type="text" />
             <ErrorMessage name="name" component="p" />
           </div>
 
           <div>
-            <label htmlFor="price">Price</label>
+            <label htmlFor="price">{t('productForm.price')}</label>
             <Field name="price" type="number" />
             <ErrorMessage name="price" component="p" />
           </div>
 
           <div>
-            <label htmlFor="description">Description</label>
+            <label htmlFor="description">{t('productForm.description')}</label>
             <Field name="description" type="textarea" />
             <ErrorMessage name="description" component="p" />
           </div>
 
           <div>
-            <label htmlFor="imageUrl">Image URL</label>
+            <label htmlFor="imageUrl">{t('productForm.imageUrl')}</label>
             <Field name="imageUrl" type="url" />
             <ErrorMessage name="imageUrl" component="p" />
           </div>
 
-          <button type="submit">Update Product</button>
+          <button type="submit">{t('editProductForm.submitButton')}</button>
         </Form>
       )}
     </Formik>

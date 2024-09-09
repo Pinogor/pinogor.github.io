@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import '../form-style.scss';
 import '../../../index.css';
 
@@ -10,6 +11,8 @@ interface IFormInputs {
 }
 
 const RegistrationForm: React.FC = () => {
+  const { t } = useTranslation();
+
   const {
     register,
     handleSubmit,
@@ -25,51 +28,51 @@ const RegistrationForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form-container">
       <div>
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">{t('registrationForm.username')}</label>
         <input
           id="username"
-          {...register('username', { required: 'Username is required' })}
+          {...register('username', { required: t('registrationForm.usernameRequired') })}
           type="text"
-          placeholder="Enter your username"
+          placeholder={t('registrationForm.placeholderUsername')}
         />
         {errors.username && <p>{errors.username.message}</p>}
       </div>
 
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">{t('registrationForm.email')}</label>
         <input
           id="email"
           {...register('email', {
-            required: 'Email is required',
+            required: t('registrationForm.emailRequired'),
             pattern: {
               value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
-              message: 'Invalid email address',
+              message: t('registrationForm.invalidEmail'),
             },
           })}
           type="email"
-          placeholder="Enter your email"
+          placeholder={t('registrationForm.placeholderEmail')}
         />
         {errors.email && <p>{errors.email.message}</p>}
       </div>
 
       <div>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">{t('registrationForm.password')}</label>
         <input
           id="password"
           {...register('password', {
-            required: 'Password is required',
+            required: t('registrationForm.passwordRequired'),
             minLength: {
               value: 6,
-              message: 'Password must be at least 6 characters long',
+              message: t('registrationForm.passwordMinLength'),
             },
           })}
           type="password"
-          placeholder="Enter your password"
+          placeholder={t('registrationForm.placeholderPassword')}
         />
         {errors.password && <p>{errors.password.message}</p>}
       </div>
 
-      <button type="submit">Register</button>
+      <button type="submit">{t('registrationForm.submitButton')}</button>
     </form>
   );
 };
