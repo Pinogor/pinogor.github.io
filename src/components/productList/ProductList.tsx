@@ -15,7 +15,7 @@ type ProductListProps = {
 };
 
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
-  const [displayedProducts, setDisplayedProducts] = useState<Product[]>(products.slice(0, 10));
+  const [displayedProducts, setDisplayedProducts] = useState<Product[]>(products);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const lastProductRef = useRef<HTMLDivElement | null>(null);
 

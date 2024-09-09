@@ -1,0 +1,63 @@
+/* Центрирование формы на странице */
+.form-container {
+  max-width: 400px;
+  margin: 50px auto; /* Центрирование формы по горизонтали и вертикальный отступ */
+  padding: 20px;
+  border-radius: 8px;
+  background-color: var(--background-color);
+  box-shadow: 0 2px 5px rgb(56, 189, 189);
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Отступы между элементами формы */
+}
+
+/* Стили для лейблов */
+.form-container label {
+  display: block; /* Лейбл будет занимать всю ширину, а поле ввода будет под ним */
+  margin-bottom: 5px; /* Отступ между лейблом и инпутом */
+  font-weight: bold;
+  color: var(--text-color); /* Используем глобальный цвет текста */
+}
+
+/* Стили для всех полей ввода */
+.form-container input {
+  background-color: var(--input-background-color);
+  color: var(--input-text-color);
+  border: 1px solid var(--input-border-color);
+  padding: 10px;
+  border-radius: 4px;
+  width: 100%; /* Устанавливаем одинаковую ширину для всех инпутов */
+  font-size: 14px;
+  box-sizing: border-box; /* Чтобы padding и border не увеличивали размер */
+}
+
+/* Фокус на инпуте */
+.form-container input:focus {
+  border-color: var(--input-focus-border-color);
+  box-shadow: 0 0 5px var(--input-focus-border-color);
+  outline: none;
+}
+
+/* Стили для кнопки отправки */
+.form-container button {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.form-container button:hover {
+  background-color: #3d3d3d;
+}
+
+/* Стили для сообщений об ошибках */
+.form-container p {
+  color: red;
+  font-size: 12px; /* Мелкий шрифт для сообщений об ошибках */
+  margin-top: 5px; /* Отступ между полем ввода и сообщением об ошибке */
+}
