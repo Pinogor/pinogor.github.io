@@ -3,7 +3,8 @@ name: Deploy Storybook
 on:
   push:
     branches:
-      - '*'
+      - c_master
+      - master
 
 jobs:
   build:
